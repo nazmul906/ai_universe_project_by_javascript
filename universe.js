@@ -59,6 +59,11 @@ const displayData = (data, datalimit) => {
             <div>
               <h6> ${element.published_in}</h6>
             </div>
+            
+            <div> 
+        <i class="fas fa-arrow-right" onclick="fetchNewsDetail()" data-bs-toggle="modal"
+        data-bs-target="#exampleModal"></i>
+        </div>
           </div>
     `;
     cardContainer.appendChild(newCard);
