@@ -12,7 +12,7 @@
       crossorigin="anonymous"
     />
   </head>
-  <body class="contaier" onload="loadData()">
+  <body class="contaier">
     <header>
       <h1>AI UNIVERSE HUB</h1>
       <button class="btn btn-danger">sort by Date</button>
@@ -22,7 +22,12 @@
       <section>
         <div id="cardContainer" class="row row-cols-1 row-cols-md-3 g-4"></div>
       </section>
-      <button id="showMore" class="btn btn-danger d-none">Show more</button>
+      <section>
+        <button id="btnShowMore" class="btn btn-danger d-none">
+          Show more
+        </button>
+      </section>
+
       <section id="spinLoader">
         <div class="d-flex justify-content-center d-none">
           <div class="spinner-border text-secondary" role="status">

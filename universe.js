@@ -1,11 +1,16 @@
 console.log("universe");
-const url = `https://openapi.programming-hero.com/api/ai/tools`;
-const loadData = () => {
+
+let fetchData = [];
+
+const loadData = (datalimit) => {
+  const url = `https://openapi.programming-hero.com/api/ai/tools`;
   toggleLoader(true); //starting the spinner
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      displayData(data.data);
+      //   fetchData = data.data.tools;
+      //   console.log(data.data);
+      displayData(data.data.tools, datalimit);
     });
 };
 
@@ -17,16 +22,18 @@ const loadData = () => {
 //   displayData(data.data);
 //   //   console.log(data.data);
 // };
-const displayData = (data) => {
+const displayData = (data, datalimit) => {
   //   console.log(data.tools.slice(0, 6));
   //   console.log(data.tools.length);
-
-  if (data.tools.length > 6) {
-    data = data.tools.slice(0, 6);
-    const showmore = document.getElementById("showMore");
-    showmore.classList.remove("d-none");
+  const btnShowMore = document.getElementById("btnShowMore");
+  if (datalimit) {
+    data = data.slice(0, 6);
+    btnShowMore.classList.remove("d-none");
+  } else {
+    btnShowMore.classList.add("d-none");
   }
 
+  console.log("asd", data);
   //catch card container
   const cardContainer = document.getElementById("cardContainer");
   data.forEach((element) => {
@@ -59,6 +66,8 @@ const displayData = (data) => {
   //   stoping the spinner
   toggleLoader(false);
 };
+
+//Spinner
 const toggleLoader = (isloading) => {
   const spinLoader = document.getElementById("spinLoader");
   if (isloading) {
@@ -68,4 +77,21 @@ const toggleLoader = (isloading) => {
     spinLoader.classList.add("d-none");
     console.log("loaded");
   }
+
+  fetchData.map((data) => {
+    console.log(data);
+  });
 };
+
+//process data
+//eta lagbe na karon kno search button nai j load kra kagbe .. deafult  ei load hbe
+// const processData = () => {};
+
+document.getElementById("btnShowMore").addEventListener("click", function () {
+  //   displayData(fetchData);
+  //when clicking we send no datalimit so slice function in display won't be executed so all data will be shown
+  loadData();
+});
+
+//by default sending some peramter to execute the slice function in display data
+loadData(6);
