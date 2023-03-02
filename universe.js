@@ -6,25 +6,32 @@ const loadData = () => {
     .then((data) => displayData(data.data));
 };
 const displayData = (data) => {
-  //console.log(data.tools);
+  console.log(data.tools.slice(0, 6));
 
   //catch card container
   const cardContainer = document.getElementById("cardContainer");
-  data.tools.forEach((element) => {
+  data.tools.slice(0, 6).forEach((element) => {
     console.log(element);
+
     const newCard = document.createElement("div");
     newCard.classList.add("col");
     newCard.innerHTML = `
     <div class="card">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-            <h5>id: ${element.id}</h5>
-              <h5 class="card-title">Card title</h5>
+            <img src="${element.image}" class="card-img-top img-fluid" alt="..." />
+            <div class="card-body col-md-8 d-flex flex-column" >
+           
+            <div class= "d-flex flex-column ">
+            <h5>Features</h5>
               <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+              ${element.features} 
               </p>
+            </div>
+
+            <div>
+              <h5> ${element.name} </h5>
+            </div>
+            <div>
+              <h6> ${element.published_in}</h6>
             </div>
           </div>
     `;
