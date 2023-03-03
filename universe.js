@@ -61,7 +61,7 @@ const displayData = (data, datalimit) => {
             </div>
             
             <div> 
-        <i class="fas fa-arrow-right" onclick="fetchNewsDetail()" data-bs-toggle="modal"
+        <i class="fas fa-arrow-right" onclick="fetchDetail('${element.id}')" data-bs-toggle="modal"
         data-bs-target="#exampleModal"></i>
         </div>
           </div>
@@ -87,6 +87,23 @@ const toggleLoader = (isloading) => {
     console.log(data);
   });
 };
+
+const fetchDetail = (id) => {
+  // console.log("id", id);
+  //as we get the id by clicking details now dynamically append this
+  const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+  console.log(url);
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayDataModal(data.data));
+
+  //as we get the desire api link(data) which changing dynamically for every card details now send it to modal to show it
+};
+
+// const displayDataModal = (data) => {
+//   console.log(data);
+// const m  document.getElementById("modalBody");
+// };
 
 //process data
 //eta lagbe na karon kno search button nai j load kra kagbe .. deafult  ei load hbe
