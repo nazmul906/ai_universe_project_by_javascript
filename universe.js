@@ -15,18 +15,17 @@ const loadData = (datalimit) => {
     });
 };
 
-const loadDataByDate = async () => {
-  //   console.log(searchtext);
+const loadDataByDate = async (limit1) => {
   const url = `https://openapi.programming-hero.com/api/ai/tools`;
   const res = await fetch(url);
   const data = await res.json();
   // displayData(data.data.tools);
-  displayDataBydate(data.data.tools);
+  displayDataBydate(data.data.tools, limit1);
   // console.log("data", data.data.tools);
 };
-const displayDataBydate = (data) => {
+const displayDataBydate = (data, limit1) => {
   console.log("Insidedate", data);
-
+  console.log("lm", limit1);
   const sortArray = data.sort(
     (a, b) =>
       Date.parse(new Date(a.published_in)) -
@@ -38,8 +37,16 @@ const displayDataBydate = (data) => {
   //   console.log("Insidedateparse", parsed);
   //   console.log("Insidedate", elem);
   // });
+
+  //our destiny is just to sent the sorted array when button is clicked
+  if (limit1 == 6) {
+    displayData(sortArray, limit1);
+  } else {
+    displayData(sortArray);
+    console.log("show more is clicked");
+  }
 };
-loadDataByDate();
+
 const displayData = (data, datalimit) => {
   //   console.log(data.tools.slice(0, 6));
 
@@ -222,6 +229,11 @@ document.getElementById("btnShowMore").addEventListener("click", function () {
   //   displayData(fetchData);
   //when clicking we send no datalimit so slice function in display won't be executed so all data will be shown
   loadData();
+  loadDataByDate();
+});
+
+document.getElementById("btnSortByDate").addEventListener("click", function () {
+  loadDataByDate(6);
 });
 
 //by default sending some peramter to execute the slice function in display data
