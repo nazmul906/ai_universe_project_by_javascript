@@ -10,21 +10,39 @@ const loadData = (datalimit) => {
     .then((data) => {
       //   fetchData = data.data.tools;
       //   console.log(data.data);
+      // data = sortDate(data);
       displayData(data.data.tools, datalimit);
     });
 };
 
-// const loadData = async () => {
-//   //   console.log(searchtext);
-//   const url = `https://openapi.programming-hero.com/api/ai/tools`;
-//   const res = await fetch(url);
-//   const data = await res.json();
-//   displayData(data.data);
-//   //   console.log(data.data);
-// };
+const loadDataByDate = async () => {
+  //   console.log(searchtext);
+  const url = `https://openapi.programming-hero.com/api/ai/tools`;
+  const res = await fetch(url);
+  const data = await res.json();
+  // displayData(data.data.tools);
+  displayDataBydate(data.data.tools);
+  // console.log("data", data.data.tools);
+};
+const displayDataBydate = (data) => {
+  console.log("Insidedate", data);
+
+  const sortArray = data.sort(
+    (a, b) =>
+      Date.parse(new Date(a.published_in)) -
+      Date.parse(new Date(b.published_in))
+  );
+  console.log("sorted", sortArray);
+  // data.forEach((elem) => {
+  //   const parsed = Date.parse(elem.published_in);
+  //   console.log("Insidedateparse", parsed);
+  //   console.log("Insidedate", elem);
+  // });
+};
+loadDataByDate();
 const displayData = (data, datalimit) => {
   //   console.log(data.tools.slice(0, 6));
-  //   console.log(data.tools.length);
+
   const btnShowMore = document.getElementById("btnShowMore");
   if (datalimit) {
     data = data.slice(0, 6);
@@ -33,15 +51,15 @@ const displayData = (data, datalimit) => {
     btnShowMore.classList.add("d-none");
   }
 
-  console.log("asd", data);
   //catch card container
   const cardContainer = document.getElementById("cardContainer");
   cardContainer.innerHTML = "";
   data.forEach((element) => {
     // console.log(element);
-
+    const parsed = Date.parse(element.published_in);
+    console.log("date", parsed);
     const newCard = document.createElement("div");
-    newCard.classList.add("col");
+    newCard.classList.add("col", "h-100");
     newCard.innerHTML = `
     <div class="card">
             <img src="${element.image}" class="card-img-top img-fluid" alt="..." />
