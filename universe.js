@@ -113,6 +113,7 @@ const displayDataModal = (data) => {
     features,
     pricing,
     accuracy,
+    integrations,
   } = data;
   //style="max-width: 740px;
   document.getElementById("modalBody").innerHTML = `
@@ -127,11 +128,15 @@ const displayDataModal = (data) => {
 
         <div class=" border-0 bg-body d-flex justify-content-between">
         <div >
-        <p class="card-text">${pricing[0].price}</p>
+        <p class="card-text">${
+          pricing[0].price ? pricing[0].price : "Price not updated"
+        }</p>
         <p class="card-text">${pricing[0].plan}</p>
         </div>
         <div> 
-        <p class="card-text">${pricing[1].price}</p>
+        <p class="card-text">${
+          pricing[0].price ? pricing[0].price : "Price not updated"
+        }</p>
         <p class="card-text">${pricing[1].plan}</p>
         </div>
         <div> 
@@ -152,9 +157,9 @@ const displayDataModal = (data) => {
          <div>
           <h3>Integration</h3>
           <ul>
-           <li> ${features["1"]["feature_name"]}</li>
-            <li> ${features["2"]["feature_name"]}</li>
-             <li>${features["3"]["feature_name"]}</li>
+           <li>${integrations[0] ? integrations[0] : "Not updated yet"}</li>
+            <li> ${integrations[1] ? integrations[1] : "Not updated yet"}</li>
+             <li>${integrations[2] ? integrations[2] : "Not updated yet"}</li>
          </ul>
          </div>
          </div>
