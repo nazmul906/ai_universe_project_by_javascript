@@ -172,7 +172,7 @@ const displayDataModal = (data) => {
 
     <div class="col-md-6">
       <img src="${image_link[0]}" class="img-fluid rounded-start" alt="...">
-     <div class="btn btn-danger"> ${
+     <div class="btn btn-danger" style=" position:relative;bottom:180px; left:220px"> ${
        accuracy.score ? accuracy.score : "not mentioned"
      }</div>
       </div>
