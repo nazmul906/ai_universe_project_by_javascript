@@ -89,8 +89,9 @@ const toggleLoader = (isloading) => {
   });
 };
 
+//modal
 const fetchDetail = (id) => {
-  // console.log("id", id);
+  console.log("id", id);
   //as we get the id by clicking details now dynamically append this
   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
   console.log(url);
@@ -102,8 +103,13 @@ const fetchDetail = (id) => {
 };
 
 const displayDataModal = (data) => {
-  console.log(data);
+  console.log("dataInModal", data);
 
+  if (data === null) {
+    console.log("object is not null");
+  } else {
+    console.log("myObject is null or undefined");
+  }
   const {
     id,
     logo,
@@ -117,8 +123,9 @@ const displayDataModal = (data) => {
     input_output_examples,
   } = data;
 
-  const cssClass = accuracy.score ? "d-block" : "d-none";
-  console.log(accuracy.score);
+  const display = accuracy.score ? "d-block" : "d-none";
+  console.log("accuracy", accuracy.score);
+  console.log("pricing", pricing);
   //style="max-width: 740px;
   document.getElementById("modalBody").innerHTML = `
  
@@ -132,20 +139,16 @@ const displayDataModal = (data) => {
 
         <div class=" border-0 bg-body d-flex justify-content-between">
         <div >
-        <p class="card-text">${
-          pricing[0].price ? pricing[0].price : "Price not updated"
-        }</p>
-        <p class="card-text">${pricing[0].plan}</p>
+        <p class="card-text">${pricing ? pricing[0].price : "No cost"}</p>
+        <p class="card-text">${pricing ? pricing[0].plan : "No cost"}</p>
         </div>
         <div> 
-        <p class="card-text">${
-          pricing[0].price ? pricing[0].price : "Price not updated"
-        }</p>
-        <p class="card-text">${pricing[1].plan}</p>
+        <p class="card-text">${pricing ? pricing[1].price : "No Cost"}</p>
+        <p class="card-text">$${pricing ? pricing[1].plan : "No cost"}</p>
         </div>
         <div> 
-        <p class="card-text">${pricing[2].price}</p>
-        <p class="card-text">${pricing[2].plan}</p>
+        <p class="card-text">${pricing ? pricing[2].price : "No cost"}</p>
+        <p class="card-text">${pricing ? pricing[2].price : "No cost"}</p>
         </div>
         </div>
 
@@ -161,9 +164,9 @@ const displayDataModal = (data) => {
          <div>
           <h3>Integration</h3>
           <ul>
-           <li>${integrations[0] ? integrations[0] : "No data found"}</li>
-            <li> ${integrations[1] ? integrations[1] : "No data found"}</li>
-             <li>${integrations[2] ? integrations[2] : "No data found"}</li>
+           <li>${integrations ? integrations[0] : "No data found"}</li>
+            <li> ${integrations ? integrations[1] : "No data found"}</li>
+             <li>${integrations ? integrations[2] : "No data found"}</li>
          </ul>
          </div>
          </div>
@@ -177,15 +180,15 @@ const displayDataModal = (data) => {
     <div class="col-md-6">
       <img src="${image_link[0]}" class="img-fluid rounded-start" alt="...">
     
-      <div class="btn btn-danger ${cssClass}" style=" position:relative;bottom:180px; left:220px; width:130px ">
+      <div class="btn btn-danger ${display}" style=" position:relative;bottom:180px; left:220px; width:130px ">
       ${accuracy.score}
        </div>
 
        <div> <h5 class="text-center">${
-         input_output_examples[0].input
+         input_output_examples ? input_output_examples[0].input : "Not found"
        }</h5></div>
         <div> <h6  class="text-center">${
-          input_output_examples[0].output
+          input_output_examples ? input_output_examples[0].output : "not Found"
         }</h6></div>
       </div>
   </div>
