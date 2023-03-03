@@ -116,6 +116,9 @@ const displayDataModal = (data) => {
     integrations,
     input_output_examples,
   } = data;
+
+  const cssClass = accuracy.score ? "d-block" : "d-none";
+  console.log(accuracy.score);
   //style="max-width: 740px;
   document.getElementById("modalBody").innerHTML = `
  
@@ -158,9 +161,9 @@ const displayDataModal = (data) => {
          <div>
           <h3>Integration</h3>
           <ul>
-           <li>${integrations[0] ? integrations[0] : "Not updated yet"}</li>
-            <li> ${integrations[1] ? integrations[1] : "Not updated yet"}</li>
-             <li>${integrations[2] ? integrations[2] : "Not updated yet"}</li>
+           <li>${integrations[0] ? integrations[0] : "No data found"}</li>
+            <li> ${integrations[1] ? integrations[1] : "No data found"}</li>
+             <li>${integrations[2] ? integrations[2] : "No data found"}</li>
          </ul>
          </div>
          </div>
@@ -173,10 +176,11 @@ const displayDataModal = (data) => {
 
     <div class="col-md-6">
       <img src="${image_link[0]}" class="img-fluid rounded-start" alt="...">
-     <div class="btn btn-danger" style=" position:relative;bottom:180px; left:220px"> ${
-       accuracy.score ? accuracy.score : "not mentioned"
-     }
+    
+      <div class="btn btn-danger ${cssClass}" style=" position:relative;bottom:180px; left:220px; width:130px ">
+      ${accuracy.score}
        </div>
+
        <div> <h5 class="text-center">${
          input_output_examples[0].input
        }</h5></div>
