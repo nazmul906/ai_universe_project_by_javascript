@@ -36,6 +36,7 @@ const displayData = (data, datalimit) => {
   console.log("asd", data);
   //catch card container
   const cardContainer = document.getElementById("cardContainer");
+  cardContainer.innerHTML = "";
   data.forEach((element) => {
     // console.log(element);
 
@@ -100,10 +101,77 @@ const fetchDetail = (id) => {
   //as we get the desire api link(data) which changing dynamically for every card details now send it to modal to show it
 };
 
-// const displayDataModal = (data) => {
-//   console.log(data);
-// const m  document.getElementById("modalBody");
-// };
+const displayDataModal = (data) => {
+  console.log(data);
+
+  const {
+    id,
+    logo,
+    tool_name,
+    description,
+    image_link,
+    features,
+    pricing,
+    accuracy,
+  } = data;
+  //style="max-width: 740px;
+  document.getElementById("modalBody").innerHTML = `
+ 
+ <div class="card mb-3" >
+  <div class="row g-0" >
+    
+    <div class="col-md-6 border border-danger" >
+      <div class="card-body " >
+        <h5 class="card-title">${id}</h5>
+        <p class="card-text">${description}</p>
+
+        <div class=" border-0 bg-body d-flex justify-content-between">
+        <div >
+        <p class="card-text">${pricing[0].price}</p>
+        <p class="card-text">${pricing[0].plan}</p>
+        </div>
+        <div> 
+        <p class="card-text">${pricing[1].price}</p>
+        <p class="card-text">${pricing[1].plan}</p>
+        </div>
+        <div> 
+        <p class="card-text">${pricing[2].price}</p>
+        <p class="card-text">${pricing[2].plan}</p>
+        </div>
+        </div>
+
+        <div class=" border-0 bg-body d-flex ">
+        <div>
+          <h3>Features</h3>
+          <ul>
+           <li> ${features["1"]["feature_name"]}</li>
+            <li> ${features["2"]["feature_name"]}</li>
+             <li>${features["3"]["feature_name"]}</li>
+         </ul>
+         </div>
+         <div>
+          <h3>Integration</h3>
+          <ul>
+           <li> ${features["1"]["feature_name"]}</li>
+            <li> ${features["2"]["feature_name"]}</li>
+             <li>${features["3"]["feature_name"]}</li>
+         </ul>
+         </div>
+         </div>
+
+        <div>
+        
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <img src="${image_link[0]}" class="img-fluid rounded-start" alt="...">
+    </div>
+  </div>
+</div>
+ `;
+};
 
 //process data
 //eta lagbe na karon kno search button nai j load kra kagbe .. deafult  ei load hbe
