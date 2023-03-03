@@ -148,7 +148,7 @@ const displayDataModal = (data) => {
         </div>
         <div> 
         <p class="card-text">${pricing ? pricing[2].price : "No cost"}</p>
-        <p class="card-text">${pricing ? pricing[2].price : "No cost"}</p>
+        <p class="card-text">${pricing ? pricing[2].plan : "No cost"}</p>
         </div>
         </div>
 
