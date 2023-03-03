@@ -114,6 +114,7 @@ const displayDataModal = (data) => {
     pricing,
     accuracy,
     integrations,
+    input_output_examples,
   } = data;
   //style="max-width: 740px;
   document.getElementById("modalBody").innerHTML = `
@@ -174,7 +175,14 @@ const displayDataModal = (data) => {
       <img src="${image_link[0]}" class="img-fluid rounded-start" alt="...">
      <div class="btn btn-danger" style=" position:relative;bottom:180px; left:220px"> ${
        accuracy.score ? accuracy.score : "not mentioned"
-     }</div>
+     }
+       </div>
+       <div> <h5 class="text-center">${
+         input_output_examples[0].input
+       }</h5></div>
+        <div> <h6  class="text-center">${
+          input_output_examples[0].output
+        }</h6></div>
       </div>
   </div>
 </div>
