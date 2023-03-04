@@ -17,6 +17,7 @@ const loadData = (datalimit) => {
 
 const loadDataByDate = async (limit1) => {
   const url = `https://openapi.programming-hero.com/api/ai/tools`;
+  toggleLoader(true);
   const res = await fetch(url);
   const data = await res.json();
   // displayData(data.data.tools);
@@ -119,7 +120,7 @@ const toggleLoader = (isloading) => {
     console.log(data);
   });
 };
-
+//   pricing && pricing[0].price ? pricing[0].price : "freeee"
 //modal
 const fetchDetail = (id) => {
   console.log("id", id);
@@ -157,6 +158,8 @@ const displayDataModal = (data) => {
   const display = accuracy.score ? "d-block" : "d-none";
   console.log("accuracy", accuracy.score);
   console.log("pricing", pricing);
+
+  // const price1 = pricing[0] === "0" ? "Free of cost" : "d-none";
   //style="max-width: 740px;
   document.getElementById("modalBody").innerHTML = `
  
@@ -171,26 +174,26 @@ const displayDataModal = (data) => {
         <div class=" border-0 bg-body d-flex justify-content-center ">
         <div class="">
         <p class="card-text text-success">${
-          pricing ? pricing[0].price : "No cost"
+          pricing ? pricing[0].price : "free of cost"
         }</p>
         <p class="card-text text-success ">${
-          pricing ? pricing[0].plan : "No cost"
+          pricing ? pricing[0].plan : "free of cost"
         }</p>
         </div>
         <div> 
         <p class="card-text text-warning">${
-          pricing ? pricing[1].price : "No Cost"
+          pricing ? pricing[1].price : "free of cost"
         }</p>
         <p class="card-text text-warning">$${
-          pricing ? pricing[1].plan : "No cost"
+          pricing ? pricing[1].plan : "free of cost"
         }</p>
         </div>
         <div> 
         <p class="card-text text-danger">${
-          pricing ? pricing[2].price : "No cost"
+          pricing ? pricing[2].price : "free of cost"
         }</p>
         <p class="card-text text-danger">${
-          pricing ? pricing[2].plan : "No cost"
+          pricing ? pricing[2].plan : "free of cost"
         }</p>
         </div>
         </div>
@@ -207,9 +210,19 @@ const displayDataModal = (data) => {
          <div>
           <h5>Integration</h5>
           <ul>
-           <li>${integrations ? integrations[0] : "No data found"}</li>
-            <li> ${integrations ? integrations[1] : "No data found"}</li>
-             <li>${integrations ? integrations[2] : "No data found"}</li>
+           <li>${
+             integrations && integrations[0] ? integrations[0] : "No data found"
+           }</li>
+            <li> ${
+              integrations && integrations[1]
+                ? integrations[1]
+                : "No data found"
+            }</li>
+             <li>${
+               integrations && integrations[2]
+                 ? integrations[2]
+                 : "No data found"
+             }</li>
          </ul>
          </div>
          </div>
@@ -224,14 +237,18 @@ const displayDataModal = (data) => {
       <img src="${image_link[0]}" class="img-fluid rounded-start" alt="...">
     
       <div class="btn btn-danger ${display}" style=" position:relative;bottom:120px; left:80px; width:130px ">
-      ${accuracy.score}
+      ${accuracy.score * 100}%
        </div>
 
        <div> <h5 class="text-center">${
-         input_output_examples ? input_output_examples[0].input : "Not found"
+         input_output_examples
+           ? input_output_examples[0].input
+           : "Data is not available yet"
        }</h5></div>
         <div> <h6  class="text-center">${
-          input_output_examples ? input_output_examples[0].output : "not Found"
+          input_output_examples
+            ? input_output_examples[0].output
+            : "Yet to update  "
         }</h6></div>
       </div>
   </div>
