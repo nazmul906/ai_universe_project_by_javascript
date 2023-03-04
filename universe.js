@@ -53,7 +53,7 @@ const displayData = (data, datalimit) => {
 
   const btnShowMore = document.getElementById("btnShowMore");
   if (datalimit) {
-    data = data.slice(0, 6);
+    data = data.slice(0, datalimit);
     btnShowMore.classList.remove("d-none");
   } else {
     btnShowMore.classList.add("d-none");
@@ -137,11 +137,6 @@ const fetchDetail = (id) => {
 const displayDataModal = (data) => {
   console.log("dataInModal", data);
 
-  if (data === null) {
-    console.log("object is not null");
-  } else {
-    console.log("myObject is null or undefined");
-  }
   const {
     id,
     logo,
@@ -159,6 +154,11 @@ const displayDataModal = (data) => {
   console.log("accuracy", accuracy.score);
   console.log("pricing", pricing);
 
+  // const priceDisplay = `${
+  //   pricing[0].price === "0" ? "free" : pricing[0].price
+  // }`;
+
+  // console.log("priceDisplay", pricing[0].price);
   // const price1 = pricing[0] === "0" ? "Free of cost" : "d-none";
   //style="max-width: 740px;
   document.getElementById("modalBody").innerHTML = `
@@ -248,7 +248,7 @@ const displayDataModal = (data) => {
         <div> <h6  class="text-center">${
           input_output_examples
             ? input_output_examples[0].output
-            : "Yet to update  "
+            : "No.Not Yet.Take a Break!  "
         }</h6></div>
       </div>
   </div>
