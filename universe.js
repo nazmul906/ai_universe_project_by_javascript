@@ -1,5 +1,5 @@
 console.log("universe");
-
+let showmore = false; // to check show more is clicked after sortbydate is clicked
 let fetchData = [];
 
 const loadData = (datalimit) => {
@@ -229,11 +229,15 @@ document.getElementById("btnShowMore").addEventListener("click", function () {
   //   displayData(fetchData);
   //when clicking we send no datalimit so slice function in display won't be executed so all data will be shown
   loadData();
-  loadDataByDate();
+  if (showmore === true) {
+    console.log("isload", isload);
+    loadDataByDate();
+  }
 });
 
 document.getElementById("btnSortByDate").addEventListener("click", function () {
   loadDataByDate(6);
+  showmore = true;
 });
 
 //by default sending some peramter to execute the slice function in display data
