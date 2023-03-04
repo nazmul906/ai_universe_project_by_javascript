@@ -1,6 +1,6 @@
 console.log("universe");
 let showmore = false; // to check show more is clicked after sortbydate is clicked
-let fetchData = [];
+//let fetchData = [];
 
 const loadData = (datalimit) => {
   const url = `https://openapi.programming-hero.com/api/ai/tools`;
@@ -33,11 +33,6 @@ const displayDataBydate = (data, limit1) => {
       Date.parse(new Date(b.published_in))
   );
   console.log("sorted", sortArray);
-  // data.forEach((elem) => {
-  //   const parsed = Date.parse(elem.published_in);
-  //   console.log("Insidedateparse", parsed);
-  //   console.log("Insidedate", elem);
-  // });
 
   //our destiny is just to sent the sorted array when sort by date button is clicked
   if (limit1 == 6) {
@@ -125,7 +120,7 @@ const toggleLoader = (isloading) => {
   //   console.log(data);
   // });
 };
-//   pricing && pricing[0].price ? pricing[0].price : "freeee"
+
 //modal
 const fetchDetail = (id) => {
   console.log("id", id);
