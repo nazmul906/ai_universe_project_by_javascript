@@ -63,8 +63,8 @@ const displayData = (data, datalimit) => {
   cardContainer.innerHTML = "";
   data.forEach((element) => {
     // console.log(element);
-    const parsed = Date.parse(element.published_in);
-    console.log("date", parsed);
+    // const parsed = Date.parse(element.published_in);
+    // console.log("date", parsed);
     const newCard = document.createElement("div");
     newCard.classList.add("col");
     newCard.innerHTML = `
@@ -78,17 +78,23 @@ const displayData = (data, datalimit) => {
               ${element.features} 
               </p>
             </div>
-
+            
             <div>
               <h5> ${element.name} </h5>
             </div>
+
+            <div class ="d-flex  flex-row justify-content-between">
+            <div>
+            
             <div>
               <h6> ${element.published_in}</h6>
             </div>
-            
-            <div> 
+            </div>
+
+            <div class= "ms-4"> 
         <i class="fas fa-arrow-right" onclick="fetchDetail('${element.id}')" data-bs-toggle="modal"
         data-bs-target="#exampleModal"></i>
+        </div>
         </div>
           </div>
     `;
@@ -154,10 +160,10 @@ const displayDataModal = (data) => {
   //style="max-width: 740px;
   document.getElementById("modalBody").innerHTML = `
  
- <div class="card mb-3" >
-  <div class="row g-0" >
+ <div class="card mb-3 " style="max-width: 100%;" >
+  <div class="row  g-0" >
     
-    <div class="col-md-6 border border-danger" >
+    <div class="col-12 col-md-6 border border-danger" >
       <div class="card-body " >
         <h5 class="card-title">${id}</h5>
         <p class="card-text">${description}</p>
@@ -202,8 +208,10 @@ const displayDataModal = (data) => {
       </div>
     </div>
 
-    <div class="col-md-6">
-      <img src="${image_link[0]}" class="img-fluid rounded-start" alt="...">
+    <div class="col-12  col-md-6">
+      <img src="${
+        image_link[0]
+      }" class="img-fluid rounded-start" alt="..." style="max-width: 100%;">
     
       <div class="btn btn-danger ${display}" style=" position:relative;bottom:180px; left:220px; width:130px ">
       ${accuracy.score}
