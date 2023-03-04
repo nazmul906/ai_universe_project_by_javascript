@@ -168,24 +168,36 @@ const displayDataModal = (data) => {
         <h5 class="card-title">${id}</h5>
         <p class="card-text">${description}</p>
 
-        <div class=" border-0 bg-body d-flex justify-content-between">
-        <div >
-        <p class="card-text">${pricing ? pricing[0].price : "No cost"}</p>
-        <p class="card-text">${pricing ? pricing[0].plan : "No cost"}</p>
+        <div class=" border-0 bg-body d-flex justify-content-center ">
+        <div class="">
+        <p class="card-text text-success">${
+          pricing ? pricing[0].price : "No cost"
+        }</p>
+        <p class="card-text text-success ">${
+          pricing ? pricing[0].plan : "No cost"
+        }</p>
         </div>
         <div> 
-        <p class="card-text">${pricing ? pricing[1].price : "No Cost"}</p>
-        <p class="card-text">$${pricing ? pricing[1].plan : "No cost"}</p>
+        <p class="card-text text-warning">${
+          pricing ? pricing[1].price : "No Cost"
+        }</p>
+        <p class="card-text text-warning">$${
+          pricing ? pricing[1].plan : "No cost"
+        }</p>
         </div>
         <div> 
-        <p class="card-text">${pricing ? pricing[2].price : "No cost"}</p>
-        <p class="card-text">${pricing ? pricing[2].plan : "No cost"}</p>
+        <p class="card-text text-danger">${
+          pricing ? pricing[2].price : "No cost"
+        }</p>
+        <p class="card-text text-danger">${
+          pricing ? pricing[2].plan : "No cost"
+        }</p>
         </div>
         </div>
 
-        <div class=" border-0 bg-body d-flex ">
+        <div class=" border-0 bg-body d-flex justify-content-center  ">
         <div>
-          <h3>Features</h3>
+          <h5>Features</h5>
           <ul>
            <li> ${features["1"]["feature_name"]}</li>
             <li> ${features["2"]["feature_name"]}</li>
@@ -193,7 +205,7 @@ const displayDataModal = (data) => {
          </ul>
          </div>
          <div>
-          <h3>Integration</h3>
+          <h5>Integration</h5>
           <ul>
            <li>${integrations ? integrations[0] : "No data found"}</li>
             <li> ${integrations ? integrations[1] : "No data found"}</li>
@@ -209,9 +221,7 @@ const displayDataModal = (data) => {
     </div>
 
     <div class="col-12  col-md-6">
-      <img src="${
-        image_link[0]
-      }" class="img-fluid rounded-start" alt="..." style="max-width: 100%;">
+      <img src="${image_link[0]}" class="img-fluid rounded-start" alt="...">
     
       <div class="btn btn-danger ${display}" style=" position:relative;bottom:180px; left:220px; width:130px ">
       ${accuracy.score}
