@@ -39,7 +39,7 @@ const displayDataBydate = (data, limit1) => {
   //   console.log("Insidedate", elem);
   // });
 
-  //our destiny is just to sent the sorted array when button is clicked
+  //our destiny is just to sent the sorted array when sort by date button is clicked
   if (limit1 == 6) {
     displayData(sortArray, limit1);
   } else {
@@ -73,7 +73,7 @@ const displayData = (data, datalimit) => {
             <img src="${element.image}" class="card-img-top img-fluid" alt="..." />
             <div class="card-body col-md-8 d-flex flex-column" >
            
-            <div class= "d-flex flex-column ">
+            <div class= "d-flex flex-column mb-4 ">
             <h5>Features</h5>
               <p class="card-text">
               ${element.features} 
@@ -85,8 +85,13 @@ const displayData = (data, datalimit) => {
             </div>
 
             <div class ="d-flex  flex-row justify-content-between">
-            <div>
-            
+            <div class ="d-flex  flex-row g-3 ">
+            <div class ="me-2">
+         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-week" viewBox="0 0 16 16">
+  <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+</svg>      
+           </div>
             <div>
               <h6> ${element.published_in}</h6>
             </div>
@@ -154,10 +159,7 @@ const displayDataModal = (data) => {
   console.log("accuracy", accuracy.score);
   console.log("pricing", pricing);
 
-  // const priceDisplay = `${
-  //   pricing[0].price === "0" ? "free" : pricing[0].price
-  // }`;
-
+  //<h5 class="card-title">${id}</h5>;
   //style="max-width: 740px;
   document.getElementById("modalBody").innerHTML = `
  
@@ -166,7 +168,7 @@ const displayDataModal = (data) => {
     
     <div class="col-12 col-md-6 border border-danger" >
       <div class="card-body " >
-        <h5 class="card-title">${id}</h5>
+        
         <p class="card-text">${description}</p>
 
         <div class=" border-0 bg-body d-flex justify-content-center ">
