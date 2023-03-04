@@ -116,9 +116,9 @@ const toggleLoader = (isloading) => {
     console.log("loaded");
   }
 
-  fetchData.map((data) => {
-    console.log(data);
-  });
+  // fetchData.map((data) => {
+  //   console.log(data);
+  // });
 };
 //   pricing && pricing[0].price ? pricing[0].price : "freeee"
 //modal
@@ -158,8 +158,6 @@ const displayDataModal = (data) => {
   //   pricing[0].price === "0" ? "free" : pricing[0].price
   // }`;
 
-  // console.log("priceDisplay", pricing[0].price);
-  // const price1 = pricing[0] === "0" ? "Free of cost" : "d-none";
   //style="max-width: 740px;
   document.getElementById("modalBody").innerHTML = `
  
@@ -255,10 +253,6 @@ const displayDataModal = (data) => {
 </div>
  `;
 };
-
-//process data
-//eta lagbe na karon kno search button nai j load kra kagbe .. deafult  ei load hbe
-// const processData = () => {};
 
 document.getElementById("btnShowMore").addEventListener("click", function () {
   //   displayData(fetchData);
