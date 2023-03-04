@@ -66,9 +66,9 @@ const displayData = (data, datalimit) => {
     const parsed = Date.parse(element.published_in);
     console.log("date", parsed);
     const newCard = document.createElement("div");
-    newCard.classList.add("col", "h-100");
+    newCard.classList.add("col");
     newCard.innerHTML = `
-    <div class="card">
+    <div class="card  h-100">
             <img src="${element.image}" class="card-img-top img-fluid" alt="..." />
             <div class="card-body col-md-8 d-flex flex-column" >
            
@@ -230,7 +230,7 @@ document.getElementById("btnShowMore").addEventListener("click", function () {
   //when clicking we send no datalimit so slice function in display won't be executed so all data will be shown
   loadData();
   if (showmore === true) {
-    console.log("isload", isload);
+    //console.log("showmore", showmore);
     loadDataByDate();
   }
 });
