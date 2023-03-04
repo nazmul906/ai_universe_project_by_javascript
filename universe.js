@@ -223,7 +223,7 @@ const displayDataModal = (data) => {
     <div class="col-12  col-md-6">
       <img src="${image_link[0]}" class="img-fluid rounded-start" alt="...">
     
-      <div class="btn btn-danger ${display}" style=" position:relative;bottom:180px; left:220px; width:130px ">
+      <div class="btn btn-danger ${display}" style=" position:relative;bottom:120px; left:80px; width:130px ">
       ${accuracy.score}
        </div>
 
